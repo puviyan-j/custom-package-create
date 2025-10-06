@@ -6,9 +6,12 @@
   "author": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild index.js --outfile=dist/index.js --bundle --minify",
-    "prepare": "npm run build"
+    "build:cjs": "esbuild index.js --bundle --platform=node --format=cjs --outfile=dist/index.cjs.js --minify",
+    "build:esm": "esbuild index.js --bundle --platform=node --format=esm --outfile=dist/index.mjs --minify",
+    "build:browser": "esbuild index.js --bundle --platform=browser --format=iife --global-name=NumberCalc --outfile=dist/index.browser.js --minify",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:browser",
+    "prepare": "npm run build",
+    "start": "node test.js"
   },
   "files": [
     "dist"

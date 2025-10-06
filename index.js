@@ -1,2 +1,3 @@
-const functionmedthod = require("./function/function");
-module.exports = {...functionmedthod};
+const functions = require("./function");
+console.log(functions);
+module.exports = functions;
